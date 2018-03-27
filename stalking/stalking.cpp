@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QTextStream>
+#include <QString>
 
 Stalking::Stalking(QWidget *pParent): QWidget(pParent)
 {
@@ -12,8 +13,21 @@ Stalking::Stalking(QWidget *pParent): QWidget(pParent)
     m_listWidget = new QListWidget();
     m_saveToFile = new QPushButton();
     m_phrases = new QStringList();
+    m_plainText = new QTextEdit();
+
+    m_dictionary = new YandexDictionary();
+    m_translater = new YandexTranslate();
+
+    // Transfer information about supported languages.
+    connect(m_translater, SIGNAL(languagesReceived(QMap<QString,QString>)),
+            m_dictionary, SLOT(getLanguages(QMap<QString,QString>)));
+
+    m_translater->getSupportedLanguages();   // Get a list of supported languages.
+    m_dictionary->getTranslationDirections();   // Get supported translation directions for Dictionary API.
+
 
     m_baseLayout->addWidget(m_lineEdit);
+    m_baseLayout->addWidget(m_plainText);
     m_baseLayout->addWidget(m_listWidget);
     m_baseLayout->addWidget(m_saveToFile);
 
@@ -30,6 +44,7 @@ Stalking::~Stalking()
     delete m_phrases;
     delete m_listWidget;
     delete m_saveToFile;
+    delete m_plainText;
 }
 
 void Stalking::add_phrase(const QString &str)
@@ -37,6 +52,19 @@ void Stalking::add_phrase(const QString &str)
     m_lineEdit->setText(str);
     m_listWidget->addItem(str);
     m_phrases->append(str);
+
+    QVector<DictionaryEntry> entries = m_dictionary->getDictionaryEntry("English", "Russian", str);
+
+    QString text;
+
+    QVector<DictionaryEntry>::iterator iter;
+    for(iter = entries.begin(); iter != entries.end(); ++iter)
+    {
+        iter->showEntry(text);
+
+        m_plainText->setText(text);
+    }
+
 }
 
 void Stalking::save_to_file()

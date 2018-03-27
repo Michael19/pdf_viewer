@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets
+QT       += widgets network
 
 TARGET = stalking
 TEMPLATE = lib
@@ -22,10 +22,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += stalking.cpp
+SOURCES += stalking.cpp \
+            dictionary_api.cpp \
+translate_api.cpp
+
+
 
 HEADERS += stalking.h\
-        stalking_global.h
+        stalking_global.h \
+        dictionary_api.h \
+translate_api.h
 
 unix {
     target.path = /usr/lib

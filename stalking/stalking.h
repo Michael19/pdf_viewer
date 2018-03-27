@@ -7,6 +7,9 @@
 #include <QVBoxLayout>
 #include <QListWidget>
 #include <QPushButton>
+#include <QTextEdit>
+#include "dictionary_api.h"
+#include "translate_api.h"
 
 class STALKINGSHARED_EXPORT Stalking: public QWidget
 {
@@ -25,6 +28,9 @@ private:
     QListWidget *m_listWidget;
     QPushButton *m_saveToFile;
     QStringList *m_phrases;
+    QTextEdit *m_plainText;
+    YandexDictionary *m_dictionary;
+    YandexTranslate *m_translater;
 };
 
 #endif // STALKING_H
