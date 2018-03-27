@@ -1,0 +1,12 @@
+#ifndef STALKING_GLOBAL_H
+#define STALKING_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(STALKING_LIBRARY)
+#  define STALKINGSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define STALKINGSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // STALKING_GLOBAL_H
