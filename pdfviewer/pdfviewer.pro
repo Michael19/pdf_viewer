@@ -12,6 +12,7 @@ SOURCES += mainwindow.cpp\
 RESOURCES += pdfviewer.qrc
 
 INCLUDEPATH += ../qpdflib
+INCLUDEPATH += ../stalking
 
 CONFIG(debug, debug|release) {
     win32:LIBS += -L$$OUT_PWD/../qpdflib/debug
@@ -22,4 +23,7 @@ win32:LIBS += qpdf.lib
 
 unix:LIBS += -L$$OUT_PWD/../qpdflib
 unix:LIBS += -lqpdf
+
+unix:LIBS += -L$$OUT_PWD/../stalking
+unix:LIBS += -lstalking
 

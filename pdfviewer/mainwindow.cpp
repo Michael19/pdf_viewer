@@ -22,6 +22,7 @@
 #include <QTextStream>
 #include "QPdfWidget"
 #include "mainwindow.h"
+#include "stalking.h"
 
 MainWindow::MainWindow(QWidget *pParent, Qt::WindowFlags flags)
     : QMainWindow(pParent, flags)
@@ -31,8 +32,14 @@ MainWindow::MainWindow(QWidget *pParent, Qt::WindowFlags flags)
     m_pPdfWidget = new QPdfWidget();
     setCentralWidget(m_pPdfWidget);
 
+    m_stalking = new Stalking();
+    m_stalking->show();
+
     createActions();
     createToolBar();
+
+    connect(m_pPdfWidget, SIGNAL(add_phrase(QString)),
+            m_stalking, SLOT(add_phrase(QString)));
 }
 
 void MainWindow::loadFile(const QString &path)

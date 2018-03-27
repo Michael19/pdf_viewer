@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS = qpdflib\
-          pdfviewer
+          pdfviewer \
+        stalking
 
 pdfviewer.depends = qpdflib

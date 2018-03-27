@@ -220,6 +220,8 @@ signals:
      */
     void pdfDocumentLoaded();
 
+    void add_phrase(const QString& phrase);
+
 private slots:
 
     void onLoadFinished(bool status);

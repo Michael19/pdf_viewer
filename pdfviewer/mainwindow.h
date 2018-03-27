@@ -20,6 +20,7 @@
 
 class QAction;
 class QPdfWidget;
+class Stalking;
 
 /**
  * @brief PDF viewer main window.
@@ -49,6 +50,7 @@ private:
     QAction *m_pOpenFileAction;
     QAction *m_pSaveFileAction;
     QPdfWidget *m_pPdfWidget;
+    Stalking* m_stalking;
 };
 
 #endif // MAINWINDOW_H

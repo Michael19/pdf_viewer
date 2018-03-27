@@ -210,6 +210,7 @@ void QPdfWidget::keyPressEvent(QKeyEvent *event)
 
     if(event->key() == 83){
         save_phazes.append(save_phaze);
+        emit add_phrase(save_phaze);
     }
 }
 
