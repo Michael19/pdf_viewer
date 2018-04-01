@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *pParent, Qt::WindowFlags flags)
 
     connect(m_pPdfWidget, SIGNAL(add_phrase(QString)),
             m_stalking, SLOT(add_phrase(QString)));
+
+    loadFile("/home/michael/Downloads/learnopengl_book.pdf");
 }
 
 void MainWindow::loadFile(const QString &path)

@@ -1,7 +1,10 @@
 TEMPLATE = subdirs
 
-SUBDIRS = qpdflib\
-          pdfviewer \
-        stalking
+SUBDIRS =\
+#qpdflib\
+#          pdfviewer \
+#        stalking \
+    mapper \
+    dictonary_viewer
 
-pdfviewer.depends = qpdflib
+#pdfviewer.depends = qpdflib

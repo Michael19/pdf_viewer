@@ -13,6 +13,7 @@ RESOURCES += pdfviewer.qrc
 
 INCLUDEPATH += ../qpdflib
 INCLUDEPATH += ../stalking
+INCLUDEPATH += ../mapper
 
 CONFIG(debug, debug|release) {
     win32:LIBS += -L$$OUT_PWD/../qpdflib/debug
@@ -27,3 +28,5 @@ unix:LIBS += -lqpdf
 unix:LIBS += -L$$OUT_PWD/../stalking
 unix:LIBS += -lstalking
 
+unix:LIBS += -L$$OUT_PWD/../mapper
+unix:LIBS += -lmapper
